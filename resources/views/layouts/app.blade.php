@@ -39,7 +39,9 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
-
+                    @if(Route::currentRouteName()=="shop")
+                    <input class="form-control" id="myInput" type="text" placeholder="find your yerba">
+                    @endif
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
