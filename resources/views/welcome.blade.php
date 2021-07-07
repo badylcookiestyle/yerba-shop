@@ -12,7 +12,11 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
     </head>
-    <body>
+    <body   
+    style="
+      background-image: url('http://localhost:8000/images/layout/yerba-welcome.jpg');
+      height: 100%;
+    ">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom">
             <div class="container px-4 px-lg-5">
@@ -29,11 +33,12 @@
             </div>
         </nav>
         <!-- Page Content-->
-        <section>
-            <div class="container px-4 px-lg-5">
+        <section >
+            
+            <div class="container px-4 px-lg-5 text-white">
                 <div class="row gx-4 gx-lg-5">
                     <div class="col-lg-6">
-                        <h1 class="mt-5">The Big Picture</h1>
+                        <h1 class="mt-5">Yerba-market</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt voluptates rerum eveniet sapiente repellat esse, doloremque quod recusandae deleniti nostrum assumenda vel beatae sed aut modi nesciunt porro quisquam voluptatem.</p>
                     </div>
                 </div>
