@@ -6,7 +6,7 @@
 <header>
      
     
-    <!-- Background image -->
+   
     <div
       class="text-center bg-image"
       style="
@@ -29,12 +29,31 @@
         </div>
       </div>
     </div>
-    <!-- Background image -->
+    
   </header>
     <nav class="text-center">
-        ADD some filters here :)
+       <h1 class="text-danger"> ADD some filters here :)</div>
+         
     </nav>
-    <div class="container">
-      I'll display here products
+    <div class="container text-center">
+        <div class="container bootstrap snipets">
+ 
+            <div class="row flow-offset-1 m-2">
+                @forelse($products as $product)
+              <div class="col-xs-6 col-md-4 border">
+                <div class="caption">
+                    <h6><a href="product/{{$product->id}}" class="text-dark">{{$product->name}}</a></h6><span class="price">
+                       <span >{{$product->price}}$</span>
+                  </div>
+                <div class="product tumbnail thumbnail-3 "><a href="product/{{$product->id}}"><img style="max-width:200px;height:auto;"src="{{asset('images/products/'.$product->image_path)}}" alt=""></a>
+                 
+                </div>
+                
+              </div>
+            @empty
+              <h2>There aren't any products yet :/</h2>
+            @endforelse
+            </div>
+          </div>
     </div>
 @endsection
