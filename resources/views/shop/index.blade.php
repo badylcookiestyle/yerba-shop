@@ -12,6 +12,8 @@
       style="
         background-image: url('http://localhost:8000/images/layout/yerba-header.jpg');
         height: 310px;
+        background-repeat:no-repeat;
+        background-size: cover;
       "
     >
       <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);height:100%">
@@ -19,7 +21,7 @@
           <div class="text-white">
             <h1 class="mb-3">
                 Your favourite yerba<br>
-                in the best prize!
+                in the best price!
             </h1>
           
              

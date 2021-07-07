@@ -17,15 +17,19 @@ class ProductSeeder extends Seeder
             'name' => 'yerba1',
             'price'=>'69',
             'category'=>'tea',
+            'brand'=>'pajarito',
+            'origin'=>'brazil',
             'description'=>'description',
-            'image_path'=>'anyImage_path',
+            'image_path'=>'yerba1.jpg',
         ]);
         DB::table('products')->insert([
             'name' => 'yerba2',
             'price'=>'62',
+            'brand'=>'pajarito',
+            'origin'=>'brazil',
             'category'=>'tea2',
             'description'=>'description2',
-            'image_path'=>'anyImage_path2',
+            'image_path'=>'yerba2.jpg',
         ]);
         DB::table('stock')->insert([
             'product_id' =>'1',

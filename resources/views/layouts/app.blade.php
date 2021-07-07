@@ -43,7 +43,7 @@
                     <input class="form-control" id="myInput" type="text" placeholder="find your yerba">
                     @endif
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto ml-2" >
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item"><a class="nav-link" href="/shop">Shop</a></li>

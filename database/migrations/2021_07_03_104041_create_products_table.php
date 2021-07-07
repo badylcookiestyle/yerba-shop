@@ -21,6 +21,8 @@ class CreateProductsTable extends Migration
             $table->decimal("price");
             $table->string("category");
             $table->text("description");
+            $table->string("origin");
+            $table->string("brand");
             $table->text("image_path");
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->nullable();
