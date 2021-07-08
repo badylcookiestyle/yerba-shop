@@ -54,6 +54,28 @@
                   </div>
                   <div class="products-panel-body">
                     <!-- I'll create table here -->
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Brand</th>
+                            <th scope="col">Origin</th>
+                            <th scope="col">Price</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        @forelse($products as $product)
+                          <tr>
+                            <th scope="row">{{$product->name}}</th>
+                            <td>{{$product->brand}}</td>
+                            <td>{{$product->origin}}</td>
+                            <td>{{$product->price}}</td>
+                          </tr>
+                          @empty
+                            <h3>There're no products</h3>
+                          @endforelse
+                        </tbody>
+                      </table>
                   </div>
                 </div>
         </div>
