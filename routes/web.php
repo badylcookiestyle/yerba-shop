@@ -24,7 +24,9 @@ Route::get('/about', function () {
 });
 
 Auth::routes();
+//---Admin dashboard
 
+//--- home?
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //--- Shop Routes
 Route::get('/shop', [App\Http\Controllers\ShopController::class, 'index'])->name('shop');
