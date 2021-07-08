@@ -10,7 +10,7 @@
                 <a href="/admin" class="list-group-item  text-white bg-dark">
                        Dashboard
                 </a>
-                <a href="#" class="list-group-item text-dark">Products</a>
+                <a href="admin/productList" class="list-group-item text-dark">Products</a>
                 <a href="#" class="list-group-item text-dark">Orders</a>
                 <a href="#" class="list-group-item text-dark">Users</a>
               </div>
@@ -66,7 +66,7 @@
                         <tbody>
                         @forelse($products as $product)
                           <tr>
-                            <th scope="row">{{$product->name}}</th>
+                            <th scope="row"><a class="text-dark" href="product/{{$product->id}}">{{$product->name}}</a></th>
                             <td>{{$product->brand}}</td>
                             <td>{{$product->origin}}</td>
                             <td>{{$product->price}}</td>
@@ -74,6 +74,7 @@
                           @empty
                             <h3>There're no products</h3>
                           @endforelse
+                          <div class="uk-width-3-4" id="react-pagination"></div>
                         </tbody>
                       </table>
                   </div>

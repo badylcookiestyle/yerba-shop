@@ -30,11 +30,27 @@ class AdminDashboardController extends Controller
         if(Auth::check() && Auth::user()->is_admin!=0){
         $amountOfUsers=User::count();
         $amountOfProducts=Product::count();
-        $latestsProducts=Product::select('name','brand','origin','price')->orderBy('id','desc')->take(5)->get();
+        $latestsProducts=Product::select('id','name','brand','origin','price')->orderBy('id','desc')->take(5)->get();
         return view('adminDashboard.index',['amountOfUsers'=>$amountOfUsers,'amountOfProducts'=>$amountOfProducts,'products'=>$latestsProducts]);
         
     }
     //--- I decided that user won't have access to this panel :)
     return redirect("/");
+    }
+    public function productList(){
+        if(Auth::user()->is_admin!=0){
+            $products=Product::orderBy('id','DESC')->paginate(7);
+            return view('adminDashboard.productList',["products"=>$products]);
+        }
+    }
+    public function orders(){
+        if(Auth::user()->is_admin!=0){
+            
+        } 
+    }
+    public function users(){
+        if(Auth::user()->is_admin!=0){
+            
+        }
     }
 }
