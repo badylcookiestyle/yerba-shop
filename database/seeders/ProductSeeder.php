@@ -13,10 +13,19 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('categories')->insert([
+            'name' => 'tea',
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'kits',
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'tools',
+        ]);
         DB::table('products')->insert([
             'name' => 'yerba1',
             'price'=>'69',
-            'category'=>'tea',
+            'category_id'=>'1',
             'brand'=>'pajarito',
             'origin'=>'brazil',
             'description'=>'description',
@@ -27,7 +36,7 @@ class ProductSeeder extends Seeder
             'price'=>'62',
             'brand'=>'pajarito',
             'origin'=>'brazil',
-            'category'=>'tea2',
+            'category_id'=>'2',
             'description'=>'description2',
             'image_path'=>'yerba2.jpg',
         ]);
@@ -36,7 +45,7 @@ class ProductSeeder extends Seeder
             'price'=>'22',
             'brand'=>'rosamonte',
             'origin'=>'brazil',
-            'category'=>'tea2',
+            'category_id'=>'2',
             'description'=>'description2',
             'image_path'=>'yerba3.jpg',
         ]);
@@ -45,7 +54,7 @@ class ProductSeeder extends Seeder
             'price'=>'24',
             'brand'=>'verde ,ate',
             'origin'=>'brazil',
-            'category'=>'tea2',
+            'category_id'=>'2',
             'description'=>'description2',
             'image_path'=>'yerba4.jpg',
         ]);
@@ -54,7 +63,7 @@ class ProductSeeder extends Seeder
             'price'=>'14',
             'brand'=>'verde mate',
             'origin'=>'brazil',
-            'category'=>'tea2',
+            'category_id'=>'2',
             'description'=>'description2',
             'image_path'=>'yerba5.jpg',
         ]);
@@ -63,7 +72,7 @@ class ProductSeeder extends Seeder
             'price'=>'16',
             'brand'=>'hoja',
             'origin'=>'brazil',
-            'category'=>'tea2',
+            'category_id'=>'2',
             'description'=>'description2',
             'image_path'=>'yerba6.jpg',
         ]);
@@ -72,7 +81,7 @@ class ProductSeeder extends Seeder
             'price'=>'16',
             'brand'=>'hoja',
             'origin'=>'brazil',
-            'category'=>'tea2',
+            'category_id'=>'2',
             'description'=>'description2',
             'image_path'=>'yerba7.jpg',
         ]);
@@ -81,7 +90,7 @@ class ProductSeeder extends Seeder
             'price'=>'16',
             'brand'=>'hoja',
             'origin'=>'brazil',
-            'category'=>'tea2',
+            'category_id'=>'2',
             'description'=>'description2',
             'image_path'=>'yerba8.jpg',
         ]);
@@ -90,7 +99,7 @@ class ProductSeeder extends Seeder
             'price'=>'16',
             'brand'=>'hoja',
             'origin'=>'brazil',
-            'category'=>'tea2',
+            'category_id'=>'2',
             'description'=>'description2',
             'image_path'=>'yerba9.jpg',
         ]);

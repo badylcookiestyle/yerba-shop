@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string("name");
             $table->decimal("price");
-            $table->string("category");
+            $table->foreignId('category_id')->constrained('categories');
             $table->text("description");
             $table->string("origin");
             $table->string("brand");

@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     { if(Auth::check() && Auth::user()->is_admin==1){
-        return redirect("/");
+        return redirect("/admin");
     }
     //--- I decided that admin won't have access to this panel :)
         return view('home');

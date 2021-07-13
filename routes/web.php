@@ -33,3 +33,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/shop', [App\Http\Controllers\ShopController::class, 'index'])->name('shop');
 //--- Product Routes
 Route::get('/product/{id}', [App\Http\Controllers\ProductController::class,'index'])->name('current.product');
+Route::post('/product', [App\Http\Controllers\ProductController::class,'add'])->name('add.product')
+    ->middleware("auth");

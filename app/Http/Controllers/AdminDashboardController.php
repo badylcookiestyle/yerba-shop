@@ -5,6 +5,7 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Stock;
 class AdminDashboardController extends Controller
 {
     /**
@@ -28,19 +29,19 @@ class AdminDashboardController extends Controller
         $amountOfProducts=0;
 
         if(Auth::check() && Auth::user()->is_admin!=0){
-        $amountOfUsers=User::count();
-        $amountOfProducts=Product::count();
-        $latestsProducts=Product::select('id','name','brand','origin','price')->orderBy('id','desc')->take(5)->get();
-        return view('adminDashboard.index',['amountOfUsers'=>$amountOfUsers,'amountOfProducts'=>$amountOfProducts,'products'=>$latestsProducts]);
-        
-    }
+            $amountOfUsers=User::count();
+            $amountOfProducts=Product::count();
+            $latestsProducts=Product::select('id','name','brand','origin','price')->orderBy('id','desc')->take(5)->get();
+            return view('adminDashboard.index',['amountOfUsers'=>$amountOfUsers,'amountOfProducts'=>$amountOfProducts,'products'=>$latestsProducts]);
+        }
     //--- I decided that user won't have access to this panel :)
-    return redirect("/");
+    return redirect("/home");
     }
     public function productList(){
         if(Auth::user()->is_admin!=0){
+            $quanity=Stock::orderBy('product_id','DESC')->paginate(7)->pluck('quantity')->toArray();
             $products=Product::orderBy('id','DESC')->paginate(7);
-            return view('adminDashboard.productList',["products"=>$products]);
+            return view('adminDashboard.productList',["products"=>$products,"quantity"=>$quanity]);
         }
     }
     public function orders(){
