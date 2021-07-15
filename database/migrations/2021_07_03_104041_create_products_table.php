@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string("name");
             $table->decimal("price");
-            $table->foreignId('category_id')->constrained('categories');
+            $table->foreignId('category_id')->references('id')->on('categories');
             $table->text("description");
             $table->string("origin");
             $table->string("brand");
@@ -27,7 +27,7 @@ class CreateProductsTable extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->nullable();
         });
-       
+
     }
 
     /**

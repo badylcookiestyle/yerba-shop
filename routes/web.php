@@ -33,5 +33,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/shop', [App\Http\Controllers\ShopController::class, 'index'])->name('shop');
 //--- Product Routes
 Route::get('/product/{id}', [App\Http\Controllers\ProductController::class,'index'])->name('current.product');
-Route::post('/product', [App\Http\Controllers\ProductController::class,'add'])->name('add.product')
+Route::post('/product', [App\Http\Controllers\ProductController::class,'add'])
+    ->name('add.product')
     ->middleware("auth");
+Route::patch('/product', [App\Http\Controllers\ProductController::class,'edit'])
+    ->name('edit.product')
+    ->middleware("auth");
+Route::delete('/product/{id}', [App\Http\Controllers\ProductController::class,'delete'])->name('delete.product');
