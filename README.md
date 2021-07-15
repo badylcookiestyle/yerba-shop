@@ -2,7 +2,7 @@
 <h4>It's a e-commerce app in laravel.
 I've already created the basics of this project, but it's still only beginning
 </h4> 
-<img src="images/i1.png">
+<img src="images/i.png">
 <img src="images/i2.png">
 <img src="images/i3.png">
 <img src="images/i4.png">
