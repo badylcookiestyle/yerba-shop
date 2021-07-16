@@ -82,7 +82,7 @@ class Product extends Model
                 'brand' => $request->productBrandEdit]);
         return;
     }
-    public static function deleteProduct($idphp ){
+    public static function deleteProduct($id){
         $image = Product::where('id', $id)->pluck('image_path')->first();
         $path = public_path('images/products/' . $image);
         File::delete($path);

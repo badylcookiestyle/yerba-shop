@@ -27,6 +27,8 @@ Auth::routes();
 //--- Admin dashboard
 Route::get('/admin',[App\Http\Controllers\AdminDashboardController::class,'index'])->name('admin.dashboard');
 Route::get('/admin/productList',[App\Http\Controllers\AdminDashboardController::class,'productList'])->name('admin.productList');
+//Route::get('/admin/',[App\Http\Controllers\AdminDashboardController::class,'productList'])->name('admin.productList');
+Route::get('/admin/userList',[App\Http\Controllers\AdminDashboardController::class,'userList'])->name('admin.userList');
 //--- home?
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //--- Shop Routes
@@ -36,7 +38,9 @@ Route::get('/product/{id}', [App\Http\Controllers\ProductController::class,'inde
 Route::post('/product', [App\Http\Controllers\ProductController::class,'add'])
     ->name('add.product')
     ->middleware("auth");
-Route::patch('/product', [App\Http\Controllers\ProductController::class,'edit'])
+Route::put('/product', [App\Http\Controllers\ProductController::class,'edit'])
     ->name('edit.product')
     ->middleware("auth");
 Route::delete('/product/{id}', [App\Http\Controllers\ProductController::class,'delete'])->name('delete.product');
+//--- Another Routes
+Route::delete('/user/{email}', [App\Http\Controllers\AdminDashboardController::class,'deleteUser'])->name('delete.user');

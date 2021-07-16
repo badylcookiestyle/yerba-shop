@@ -32,6 +32,15 @@ function displayProductErrors(data){
     data.responseJSON.errors.productCategory  ?  $('#product-errors'.toString()).append(data.responseJSON.errors.productCategory+'<br>'):false;
     data.responseJSON.errors.productPrice  ? $('#product-errors'.toString()).append(data.responseJSON.errors.productPrice+'<br>'):false;
     data.responseJSON.errors.file ?   $('#product-errors'.toString()).append(data.responseJSON.errors.file+'<br>'):false;
+
+    data.responseJSON.errors.productNameEdit ? $('#product-edit-errors'.toString()).append(data.responseJSON.errors.productNameEdit +'<br>'):false;
+    data.responseJSON.errors.productBrandEdit   ? $('#product-edit-errors'.toString()).append(data.responseJSON.errors.productBrandEdit +'<br>'):false;
+    data.responseJSON.errors.productOriginEdit   ?  $('#product-edit-errors'.toString()).append(data.responseJSON.errors.productOriginEdit +'<br>'):false;
+    data.responseJSON.errors.productQuantityEdit   ?  $('#product-edit-errors'.toString()).append(data.responseJSON.errors.productQuantityEdit +'<br>'):false;
+    data.responseJSON.errors.productDescriptionEdit   ? $('#product-edit-errors'.toString()).append(data.responseJSON.errors.productDescriptionEdit +'<br>'):false;
+    data.responseJSON.errors.productCategoryEdit   ?  $('#product-edit-errors'.toString()).append(data.responseJSON.errors.productCategoryEdit +'<br>'):false;
+    data.responseJSON.errors.productPriceEdit   ? $('#product-edit-errors'.toString()).append(data.responseJSON.errors.productPriceEdit +'<br>'):false;
+    data.responseJSON.errors.file ?   $('#product-edit-errors'.toString()).append(data.responseJSON.errors.file+'<br>'):false;
 }
 $('#product-errors').hide()
 $('#product-edit-errors').hide()
@@ -124,8 +133,6 @@ $('#delete-product-btn').click(function(){
 })
 
 $("#edit-product-btn").click(function(){
-    console.log("pacz")
-    console.log("clicked")
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
@@ -144,7 +151,17 @@ $("#edit-product-btn").click(function(){
     form_data.append('productIdEdit',productId);
     form_data.append('fileEdit',file_data);
 
-
+    var kek={
+        productNameEdit:$('#productNameEdit').val(),
+        productBrandEdit:$('#productBrandEdit').val(),
+        productOriginEdit:$('#productOriginEdit').val(),
+        productQuantityEdit:$('#productQuantityEdit').val(),
+        productDescriptionEdit:$('#productDescriptionEdit').val(),
+        productCategoryEdit:$('#productCategoryEdit').val(),
+        productPriceEdit:$('#productPriceEdit').val(),
+        productIdEdit:productId,
+        fileEdit:file_data,
+    }
 
     $.ajax({
         url: "/product",
@@ -152,10 +169,10 @@ $("#edit-product-btn").click(function(){
         cache: false,
         contentType: false,
         processData: false,
-        data: form_data,
-        type: 'PATCH',
+        data:kek,
+        type: 'PUT',
         success: function(data){
-            $('#product-errors').empty()
+            $('#product-edit-errors').empty()
             $('#editProductModal').modal('toggle')
 
             $('body').removeClass('modal-open')
@@ -164,10 +181,11 @@ $("#edit-product-btn").click(function(){
 
         },
         error: function(data){
-            console.log(form_data)
             console.log(data)
-            $('#product-errors').empty()
+            $('#product-edit-errors').empty()
+            $('#product-edit-errors').show()
             displayProductErrors(data)
+
         }
 
 

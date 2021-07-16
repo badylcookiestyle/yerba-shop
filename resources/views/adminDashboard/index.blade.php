@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
- 
+
 
   <section class="main-dashboard my-5">
     <div class="container">
@@ -12,9 +12,9 @@
                 </a>
                 <a href="admin/productList" class="list-group-item text-dark">Products</a>
                 <a href="#" class="list-group-item text-dark">Orders</a>
-                <a href="#" class="list-group-item text-dark">Users</a>
+                <a href="admin/userList" class="list-group-item text-dark">Users</a>
               </div>
-             
+
         </div>
         <div class="col-md-9">
             <div class="panel panel-default">
@@ -26,26 +26,26 @@
                     <div class="col-md-3">
                         <div class="d-flex">
                             <h4>Users {{$amountOfUsers}}</h4>
-                            
-                           
+
+
                         </div>
                       </div>
                  <div class="col-md-3">
                     <div class="d-flex">
                         <h4>Products {{$amountOfProducts}}</h4>
-                        
-                       
+
+
                     </div>
                   </div>
-                  
+
                     <div class="col-md-3">
                         <div class="d-flex">
                             <h4>Visitors  0</h4>
-                           
-                           
+
+
                         </div>
                       </div>
-                     
+
                 </div>
               </div>
               <div class="panel panel-default">
@@ -84,9 +84,9 @@
     </div>
   </section>
   <footer id="footer">
-   
+
   </footer>
 
 
-  
+
 @endsection

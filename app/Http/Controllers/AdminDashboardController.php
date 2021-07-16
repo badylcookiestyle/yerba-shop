@@ -24,7 +24,7 @@ class AdminDashboardController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    { 
+    {
         $amountOfUsers=0;
         $amountOfProducts=0;
 
@@ -46,12 +46,20 @@ class AdminDashboardController extends Controller
     }
     public function orders(){
         if(Auth::user()->is_admin!=0){
-            
-        } 
-    }
-    public function users(){
-        if(Auth::user()->is_admin!=0){
-            
+
         }
     }
-}
+    public function userList(){
+        if(Auth::user()->is_admin!=0){
+            $users=User::select('name','email','created_at')->where('is_admin',0)->paginate(7);
+            return view("adminDashboard.userList",["users"=>$users]);
+        }
+    }
+    public function deleteUser($email){
+        if(Auth::user()->is_admin!=0){
+                User::where("email",$email)->where("is_admin",0)->delete();
+                return response()->json(['success' =>$email]);
+            }
+        }
+    }
+

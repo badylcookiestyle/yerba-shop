@@ -11,7 +11,7 @@
                         </a>
                         <a href="#" class="list-group-item text-white  bg-dark">Products</a>
                         <a href="#" class="list-group-item text-dark">Orders</a>
-                        <a href="#" class="list-group-item text-dark">Users</a>
+                        <a href="userList" class="list-group-item text-dark">Users</a>
                     </div>
 
                 </div>
@@ -73,9 +73,9 @@
 
     </footer>
 @section('modals')
-    @extends('layouts.addProductModal')
-    @extends('layouts.editProductModal')
-    @extends('layouts.deleteProductModal')
+    @extends('modals.addProductModal')
+    @extends('modals.editProductModal')
+    @extends('modals.deleteProductModal')
 @endsection
 <script type="text/javascript" src="{{asset('js/modals/productModals.js')}}">
 
