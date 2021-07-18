@@ -72,13 +72,14 @@
     <footer id="footer">
 
     </footer>
-@section('modals')
-    @extends('modals.addProductModal')
-    @extends('modals.editProductModal')
-    @extends('modals.deleteProductModal')
-@endsection
+
 <script type="text/javascript" src="{{asset('js/modals/productModals.js')}}">
 
 </script>
 
+@endsection
+@section('modals')
+    @extends('modals.addProductModal')
+    @extends('modals.editProductModal')
+    @extends('modals.deleteProductModal')
 @endsection

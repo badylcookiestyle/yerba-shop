@@ -29,7 +29,7 @@ Route::get('/admin',[App\Http\Controllers\AdminDashboardController::class,'index
 Route::get('/admin/productList',[App\Http\Controllers\AdminDashboardController::class,'productList'])->name('admin.productList');
 //Route::get('/admin/',[App\Http\Controllers\AdminDashboardController::class,'productList'])->name('admin.productList');
 Route::get('/admin/userList',[App\Http\Controllers\AdminDashboardController::class,'userList'])->name('admin.userList');
-//--- home?
+//--- Home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //--- Shop Routes
 Route::get('/shop', [App\Http\Controllers\ShopController::class, 'index'])->name('shop');
@@ -42,5 +42,10 @@ Route::put('/product', [App\Http\Controllers\ProductController::class,'edit'])
     ->name('edit.product')
     ->middleware("auth");
 Route::delete('/product/{id}', [App\Http\Controllers\ProductController::class,'delete'])->name('delete.product');
+//--- Cart Controller
+Route::get('/cart', [App\Http\Controllers\CartController::class,'index'])->name('current.cart');
+Route::post('/cart', [App\Http\Controllers\CartController::class,'add'])->name('add.item');
+//btw it's not deleting a cart it's just deleting a category
+Route::delete('/cart/{id}', [App\Http\Controllers\CartController::class,'deleteItem'])->name('delete.item');
 //--- Another Routes
 Route::delete('/user/{email}', [App\Http\Controllers\AdminDashboardController::class,'deleteUser'])->name('delete.user');
