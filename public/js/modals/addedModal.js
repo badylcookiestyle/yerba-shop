@@ -1,4 +1,5 @@
 console.log("brch")
+$("#cant-buy").hide()
 $("#add-product-btn").click(function(){
 
     $.ajaxSetup({
@@ -19,11 +20,13 @@ $("#add-product-btn").click(function(){
         },
         type: 'POST',
         success: function(data){
-            console.log(data)
+
+            $("#cant-buy").hide()
         },
         error: function(data){
-            console.log(data)
 
+
+            $("#cant-buy").show()
         }
 
 

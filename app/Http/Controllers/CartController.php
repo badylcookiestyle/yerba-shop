@@ -5,6 +5,7 @@ use Auth;
 use App\Models\Cart;
 use App\Models\CartItem;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\ToCartRequest;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -20,7 +21,7 @@ class CartController extends Controller
         }
         return view('shop.cart');
     }
-    function add(Request $request){
+    function add(ToCartRequest $request){
         if (Auth::check()) {
             if(Cart::where('user_id',Auth::id())->where('expired',0)->first()===null){
                 $cart=new Cart;
