@@ -94,7 +94,9 @@
         <main class="pb-4">
             @yield('content')
             @yield('modals')
+
         </main>
     </div>
 </body>
+@yield('scripts')
 </html>

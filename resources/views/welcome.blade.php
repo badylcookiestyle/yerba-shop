@@ -5,14 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        
-        <title>The Big Picture - Start Bootstrap Template</title>
+
+        <title>yerba-market</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+
     </head>
-  
+
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom">
             <div class="container px-4 px-lg-5">
@@ -30,7 +28,7 @@
         </nav>
         <!-- Page Content-->
         <section >
-            
+
             <div class="container px-4 px-lg-5 text-white">
                 <div class="row gx-4 gx-lg-5">
                     <div class="col-lg-6">
@@ -45,12 +43,12 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <style>
-            body{  
-           
-               
+            body{
+
+
       background-image: url('http://localhost:8000/images/layout/yerba-welcome.jpg');
       height: 100%;
-     
+
            }
              </style>
     <script src="{{ asset('js/app.js') }}" defer></script>

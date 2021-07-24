@@ -27,19 +27,20 @@
                                             <div class="product-name">
                                                 <a href="product/{{$product->id}}" class="text-dark font-weight-bold">{{$product->name}}</a>
                                                 <div class="product-info">
-                                                    <div>Brand <span class="value">{{$product->brand}}</span></div>
-                                                    <div>Origin <span class="value">{{$product->origin}}</span></div>
-                                                    <div>Price per one <span class="value">{{$product->price}}</span></div>
+                                                    <div>Brand <span class="value brand">{{$product->brand}}</span></div>
+                                                    <div>Origin <span class="value ">{{$product->origin}}</span></div>
+                                                    <div>Price per one <span class="value pricePerOne">{{$product->price}}</span></div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4 quantity">
+                                            <span>In stock {{$product->z}}</span>
                                             <label for="quantity">Quantity:</label>
-                                            <input id="quantity" type="number" value ="{{$product->quantity}}" class="form-control quantity-input">
+                                            <input id="quantity" type="number" value ="{{$product->quantity}}" min="1" max="{{$product->z}}"class="form-control quantity-input">
 
                                         </div>
                                         <div class="col-md-3 price">
-                                            <span>{{$product->quantity*$product->price}}$</span>
+                                            <span class="multipliedPrice">{{$product->quantity*$product->price}}$</span>
                                             <button class="btn btn-danger delete-product"   data-product-id="{{$product->id}}">delete</button>
                                         </div>
                                     </div>
@@ -60,7 +61,7 @@
                 <div class="summary">
                     <h3>Summary</h3>
 
-                    <span>Price for everything {{$i}}</span>
+                    <h4>Price for everything <span class="finalPrice">{{$i}}</span></h4>
                     <button type="button" class="btn btn-outline-primary btn-lg btn-block my-5">Payment</button>
                 </div>
             </div>
@@ -71,7 +72,11 @@
     </div>
 
     </section>
+
+
+@endsection
+@push('scripts')
     <script type="text/javascript" src="{{asset('js/cart.js')}}">
 
     </script>
-@endsection
+@endpush

@@ -2,7 +2,7 @@
 
 @section('content')
 
-   
+
     <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -15,15 +15,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                       
-                       
-                            
-                       
                     {{ __('You are logged in!') }}
                 </div>
             </div>
         </div>
     </div>
-    
+
 </div>
 @endsection

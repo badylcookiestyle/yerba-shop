@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Auth;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Product;
@@ -21,7 +22,7 @@ class AdminDashboardController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
     public function index()
     {

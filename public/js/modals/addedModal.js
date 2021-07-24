@@ -1,5 +1,5 @@
-console.log("brch")
 $("#cant-buy").hide()
+$("#can-buy").hide()
 $("#add-product-btn").click(function(){
 
     $.ajaxSetup({
@@ -7,10 +7,6 @@ $("#add-product-btn").click(function(){
             'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
         }
     });
-
-
-
-
     $.ajax({
         url: "/cart",
         dataType: 'json',
@@ -22,10 +18,11 @@ $("#add-product-btn").click(function(){
         success: function(data){
 
             $("#cant-buy").hide()
+            $("#can-buy").show()
         },
         error: function(data){
 
-
+            $("#can-buy").hide()
             $("#cant-buy").show()
         }
 

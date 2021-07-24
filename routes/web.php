@@ -22,7 +22,9 @@ Route::get('/contact', function () {
 Route::get('/about', function () {
     return view('about');
 });
-
+Route::get('/payment',function(){
+    return view('shop.payment');
+});
 Auth::routes();
 //--- Admin dashboard
 Route::get('/admin',[App\Http\Controllers\AdminDashboardController::class,'index'])->name('admin.dashboard');
@@ -47,5 +49,7 @@ Route::get('/cart', [App\Http\Controllers\CartController::class,'index'])->name(
 Route::post('/cart', [App\Http\Controllers\CartController::class,'add'])->name('add.item');
 //btw it's not deleting a cart it's just deleting a category
 Route::delete('/cart/{id}', [App\Http\Controllers\CartController::class,'deleteItem'])->name('delete.item');
+Route::patch('/cart', [App\Http\Controllers\CartController::class,'editItem'])->name('edit.item');
 //--- Another Routes
 Route::delete('/user/{email}', [App\Http\Controllers\AdminDashboardController::class,'deleteUser'])->name('delete.user');
+

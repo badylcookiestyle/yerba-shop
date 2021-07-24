@@ -41,6 +41,7 @@
                             <div class="row">
                                 <div class="col-sm-12 col-md-6 col-lg-6">
                                     <div id="cant-buy"class="alert alert-danger">You can't buy as much products</div>
+                                    <div id="can-buy"class="alert alert-success">Your product is in the cart now :)</div>
                                     <input type="number" class="my-3" id="quantity" min="0">
                                     <button class="btn btn-success btn-lg text-white" data-toggle="modal"
                                             data-target="#addProductModal" id="add-product-btn">Add to cart
@@ -58,8 +59,10 @@
 
                 @endif
             </div>
-            <script type="text/javascript" src="{{asset('js/modals/addedModal.js')}}"></script>
 
+            @push('scripts')
+                <script type="text/javascript" src="{{asset('js/modals/addedModal.js')}}"></script>
+    @endpush
 @endsection
 @section('modals')
     @extends('modals.addToCartModal')

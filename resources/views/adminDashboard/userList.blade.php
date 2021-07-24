@@ -53,7 +53,9 @@
 
     </footer>
 
-<script type="text/javascript"  src="{{asset('js/deleteUser.js')}}">
-</script>
 
+    @push('scripts')
+        <script type="text/javascript"  src="{{asset('js/deleteUser.js')}}">
+        </script>
+    @endpush
 @endsection

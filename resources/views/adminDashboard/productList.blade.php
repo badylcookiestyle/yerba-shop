@@ -73,11 +73,12 @@
 
     </footer>
 
-<script type="text/javascript" src="{{asset('js/modals/productModals.js')}}">
-
-</script>
-
 @endsection
+@push('scripts')
+    <script type="text/javascript" src="{{asset('js/modals/productModals.js')}}">
+
+    </script>
+@endpush
 @section('modals')
     @extends('modals.addProductModal')
     @extends('modals.editProductModal')

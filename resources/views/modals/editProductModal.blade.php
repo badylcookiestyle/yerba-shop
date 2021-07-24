@@ -1,6 +1,6 @@
 @php
     use Illuminate\Support\Facades\DB;
-    $categories=DB::select('select * from categories');
+    $categories=DB::select('select * from categories')
 @endphp
 
 <!-- Modal -->
