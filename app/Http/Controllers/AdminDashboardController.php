@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Payment;
 use Auth;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Product;
+
 use App\Models\Stock;
 class AdminDashboardController extends Controller
 {
@@ -44,17 +46,21 @@ class AdminDashboardController extends Controller
             $products=Product::orderBy('id','DESC')->paginate(7);
             return view('adminDashboard.productList',["products"=>$products,"quantity"=>$quanity]);
         }
+        return view('home');
     }
     public function orders(){
         if(Auth::user()->is_admin!=0){
-
+            $orders=Payment::paginate(7);
+            return view('adminDashboard.orders',['orders'=>$orders]);
         }
+        return view('home');
     }
     public function userList(){
         if(Auth::user()->is_admin!=0){
             $users=User::select('name','email','created_at')->where('is_admin',0)->paginate(7);
             return view("adminDashboard.userList",["users"=>$users]);
         }
+        return view('home');
     }
     public function deleteUser($email){
         if(Auth::user()->is_admin!=0){
@@ -62,5 +68,6 @@ class AdminDashboardController extends Controller
                 return response()->json(['success' =>$email]);
             }
         }
+
     }
 

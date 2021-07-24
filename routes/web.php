@@ -32,6 +32,7 @@ Auth::routes();
 Route::get('/admin',[App\Http\Controllers\AdminDashboardController::class,'index'])->name('admin.dashboard');
 Route::get('/admin/productList',[App\Http\Controllers\AdminDashboardController::class,'productList'])->name('admin.productList');
 //Route::get('/admin/',[App\Http\Controllers\AdminDashboardController::class,'productList'])->name('admin.productList');
+Route::get('/admin/orders',[App\Http\Controllers\AdminDashboardController::class,'orders'])->name('admin.orders');
 Route::get('/admin/userList',[App\Http\Controllers\AdminDashboardController::class,'userList'])->name('admin.userList');
 //--- Home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
