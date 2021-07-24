@@ -9,7 +9,7 @@ use App\Models\Payment;
 use Illuminate\Http\Request;
 use App\Models\Users;
 use App\Models\Cart;
-use Auth;
+use Illuminate\Support\Facades\DB;
 
 class Payment extends Model
 {
@@ -37,4 +37,13 @@ class Payment extends Model
         }
         return response()->json(['success' =>'-']);
     }
+    public static function get($id){
+            $products=DB::select("SELECT DISTINCT products.id,products.name,products.brand,cart_items.quantity,orders.status FROM orders INNER JOIN carts ON orders.cart_id=carts.id INNER JOIN  cart_items on carts.id=cart_items.cart_id inner join products on cart_items.product_id = products.id WHERE orders.id=?",[$id]);
+            return response()->json(['success' => $products]);
+        }
+        public static function changeStatus($request){
+            Payment::where('id',$request->id)->update(['status'=>$request->status]);
+            return response()->json(['success' =>'-']);
+        }
+    //}
 }

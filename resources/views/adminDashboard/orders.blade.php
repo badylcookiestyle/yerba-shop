@@ -9,14 +9,14 @@
                         <a href="/admin" class="list-group-item  text-dark">
                             Dashboard
                         </a>
-                        <a href="#" class="list-group-item text-white  bg-dark">Products</a>
-                        <a href="#" class="list-group-item text-dark">Orders</a>
+                        <a href="productList" class="list-group-item text-dark">Products</a>
+                        <a href="#" class="list-group-item text-white  bg-dark">Orders</a>
                         <a href="userList" class="list-group-item text-dark">Users</a>
                     </div>
 
                 </div>
                 <div class="col-md-9">
-                    <h1>Products</h1>
+                    <h1>Orders</h1>
 
                     <table class="table">
                         <thead>
@@ -29,14 +29,18 @@
                         </thead>
                         <tbody id="products-body">
                         @forelse($orders as $order)
-                            <tr id="{{$order->id}}">
+                            <tr id="{{$order->id}} ">
                                 <th scope="row">
 
                                     <button class="btn btn-danger btn-sm m-1"
                                            data-toggle="modal"
+
                                             data-target="#deleteProductModal" data-id="{{$order->id}}">delete
                                     </button>
-
+                                    <button class="btn btn-outline-info btn-sm m-1 change-status"
+                                            data-toggle="modal"
+                                            data-target="#orderModal"  data-id="{{$order->id}}">Change Status
+                                    </button>
                                 </th>
 
                                 <td>{{$order->status}}</td>
@@ -50,10 +54,7 @@
                         @endforelse
                         <div class="d-flex my-2">
                             {{ $orders->links() }}
-                            <button type="button" class="btn btn-outline-primary ml-5 btn-sm" data-toggle="modal"
-                                    data-target="#addProductModal">
-                                Add new product
-                            </button>
+
                         </div>
                         </tbody>
                     </table>
@@ -67,12 +68,10 @@
 
 @endsection
 @push('scripts')
-    <script type="text/javascript" src="{{asset('js/modals/productModals.js')}}">
+    <script type="text/javascript" src="{{asset('js/modals/orderModal.js')}}"></script>
 
-    </script>
 @endpush
 @section('modals')
-    @extends('modals.addProductModal')
-    @extends('modals.editProductModal')
-    @extends('modals.deleteProductModal')
+    @extends('modals.orderModal')
+
 @endsection

@@ -55,4 +55,6 @@ Route::delete('/cart/{id}', [App\Http\Controllers\CartController::class,'deleteI
 Route::patch('/cart', [App\Http\Controllers\CartController::class,'editItem'])->name('edit.item');
 //--- Another Routes
 Route::delete('/user/{email}', [App\Http\Controllers\AdminDashboardController::class,'deleteUser'])->name('delete.user');
+Route::get('/order/{id}',[App\Http\Controllers\PaymentController::class,'get']);
+Route::patch('order',[App\Http\Controllers\PaymentController::class,'changeStatus']);
 
