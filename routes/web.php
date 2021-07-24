@@ -22,9 +22,11 @@ Route::get('/contact', function () {
 Route::get('/about', function () {
     return view('about');
 });
+//--- Payment
 Route::get('/payment',function(){
     return view('shop.payment');
 });
+Route::post('/payment',[App\Http\Controllers\PaymentController::class,'payment']);
 Auth::routes();
 //--- Admin dashboard
 Route::get('/admin',[App\Http\Controllers\AdminDashboardController::class,'index'])->name('admin.dashboard');

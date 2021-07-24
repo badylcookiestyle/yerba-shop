@@ -14,6 +14,6 @@ class PaymentController extends Controller
         $this->middleware('auth');
     }
     public function payment(PaymentRequest $request){
-        Payment::payment($request);
+      return  Payment::payment($request);
     }
 }

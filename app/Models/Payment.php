@@ -16,11 +16,12 @@ class Payment extends Model
     use HasFactory;
     protected $table = 'orders';
     protected $primaryKey = 'id';
-    public function payment($request){
+    public static function payment($request){
         if (Auth::check()){
-            $cartId=Cart::where('user_id',Auth::id())->where('expired',0)->pluck('id')->first();
+            $userId=Auth::id();
+            $cartId=Cart::where('user_id',$userId)->where('expired',0)->pluck('id')->first();
             if(isset($cartId)){
-                $userId=Auth()::id();
+
                 Cart::where('id',$cartId)->update(['expired'=>0]);
                 Payment::insert(['user_id'=>$userId,
                     'cart_id'=>$cartId,
@@ -34,5 +35,6 @@ class Payment extends Model
                 ]);
             }
         }
+        return response()->json(['success' =>'-']);
     }
 }

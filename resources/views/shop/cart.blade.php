@@ -62,7 +62,7 @@
                     <h3>Summary</h3>
 
                     <h4>Price for everything <span class="finalPrice">{{$i}}</span></h4>
-                    <button type="button" class="btn btn-outline-primary btn-lg btn-block my-5">Payment</button>
+                    <a href="payment"type="button" class="btn btn-outline-primary btn-lg btn-block my-5">Payment</a>
                 </div>
             </div>
         </div>

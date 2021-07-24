@@ -24,7 +24,6 @@ class PaymentRequest extends FormRequest
     public function rules()
     {
         return [
-            'status'=>'required|min:3|max:64',
             'delivery_option'=>'required|min:3|max:64',
             'state'=>'required|min:3|max:64',
             'city'=>'required|min:3|max:64',
