@@ -21,7 +21,11 @@ $("#add-product-btn").click(function(){
             $("#can-buy").show()
         },
         error: function(data){
+            $('#addProductModal').modal('toggle')
 
+            $('body').removeClass('modal-open')
+            $('.modal-backdrop').remove()
+            $(':input').val('');
             $("#can-buy").hide()
             $("#cant-buy").show()
         }

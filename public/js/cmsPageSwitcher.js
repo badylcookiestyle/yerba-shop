@@ -1,0 +1,13 @@
+$(".s").hide()
+$("#s-btn-main").show()
+$(".h-btn").click(function(){
+    $('.h-btn').removeClass('bg-dark')
+    $('.h-btn').removeClass('text-white')
+    $('.h-btn').addClass('text-dark')
+    $('#'+$(this).attr('id')).removeClass('text-dark')
+    $('#'+$(this).attr('id')).addClass('text-white')
+    $('#'+$(this).attr('id')).addClass('bg-dark')
+    $('.s').hide()
+    $('#s-'+$(this).attr('id')).show()
+    console.log($(this).attr('id'))
+})

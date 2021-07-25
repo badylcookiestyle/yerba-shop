@@ -6,7 +6,7 @@
     <section class="main">
         <div class="container my-5">
             <div class="block-heading">
-                <h1>Shopping Cart</h1>
+                <h1>Details</h1>
 
             </div>
             <div class="content my-5">
@@ -63,11 +63,11 @@
                             @if($products[0]->status=="cancelled")
                                 <h5 class="text-danger">Status {{$products[0]->status}}</h5>
                             @endif
-                            @else
+                            @if($products[0]->status=="stats")
                                 <h5 class="text-success">Status {{$products[0]->status}}</h5>
                                 @endif
                                 <h5>Price for everything <span class="finalPrice">{{$i}}</span></h5>
-                            <a href="payment"type="button" class="btn btn-outline-primary btn-lg btn-block my-5">Payment</a>
+
                         </div>
                     </div>
                 </div>

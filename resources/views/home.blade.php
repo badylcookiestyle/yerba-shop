@@ -7,10 +7,10 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="list">
-                        <a href="/home" class="list-group-item  text-white bg-dark">
+                        <a href="/#" class="list-group-item  text-white bg-dark">
                             Dashboard
                         </a>
-                        <a href="admin/settings" class="list-group-item text-dark">Products</a>
+                        <a href="/settings" class="list-group-item text-dark">Settings</a>
 
                     </div>
 
@@ -32,8 +32,11 @@
 
                             <tr id="{{$order->id}} ">
                             <td><a href="details/{{$order->id}}" class="btn btn-outline-info">Details</a></td>
-                        @if($order->status=='accepted')
+                        @if($order->status=='sent')
                                 <td class="text-success">{{$order->status}}</td>
+                                @endif
+                                @if($order->status=='accepted')
+                                    <td class="text-info">accepted</td>
                                 @endif
                             @if($order->status=='cancelled')
                                 <td class="text-danger">{{$order->status}}</td>

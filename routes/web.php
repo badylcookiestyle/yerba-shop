@@ -22,6 +22,9 @@ Route::get('/contact', function () {
 Route::get('/about', function () {
     return view('about');
 });
+Route::get('admin/cms', function () {
+    return view('adminDashboard.cms');
+});
 //--- Payment
 
 Route::get('/payment',[App\Http\Controllers\PaymentController::class,'index']);
@@ -35,6 +38,8 @@ Route::get('/admin/orders',[App\Http\Controllers\AdminDashboardController::class
 Route::get('/admin/userList',[App\Http\Controllers\AdminDashboardController::class,'userList'])->name('admin.userList');
 //--- Home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//--- Settings
+Route::get('/settings',[App\Http\Controllers\SettingsController::class,'index']);
 //--- Shop Routes
 Route::get('/shop', [App\Http\Controllers\ShopController::class, 'index'])->name('shop');
 //--- Product Routes
@@ -57,4 +62,8 @@ Route::delete('/user/{email}', [App\Http\Controllers\AdminDashboardController::c
 Route::get('/order/{id}',[App\Http\Controllers\PaymentController::class,'get']);
 Route::get('/details/{id}',[App\Http\Controllers\PaymentController::class,'details']);
 Route::patch('order',[App\Http\Controllers\PaymentController::class,'changeStatus']);
+//--- Edit cms
+Route::post('cms/main',[App\Http\Controllers\CmsController::class,'editMain']);
+Route::post('cms/main',[App\Http\Controllers\CmsController::class,'editShop']);
+Route::post('cms/main',[App\Http\Controllers\CmsController::class,'editAbout']);
 
