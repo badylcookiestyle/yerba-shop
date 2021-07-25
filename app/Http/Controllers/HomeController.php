@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-
+use App\Models\Payment;
 class HomeController extends Controller
 {
     /**
@@ -27,6 +27,8 @@ class HomeController extends Controller
         return redirect("/admin");
     }
     //--- I decided that admin won't have access to this panel :)
-        return view('home');
+        $id=Auth::id();
+        $orders=Payment::where('user_id',$id)->paginate(10);
+        return view('home',['orders'=>$orders]);
     }
 }

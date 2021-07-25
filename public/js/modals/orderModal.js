@@ -13,17 +13,19 @@ function changeStatus(status){
         data: {id: cId,status:status},
         type: 'patch',
         success: function (data) {
-            console.log(data)
+
+            $('#orderModal').modal('toggle')
+            $('body').removeClass('modal-open')
+            $('.modal-backdrop').remove()
+            $(':input').val('');
         },
-        error: function (data) {
-            console.log(data)
-        }
+
 
     });
 }
 $('body').on('click','.change-status', function(){
 
-    console.log($(this).data('id'))
+
     currentId=$(this).data('id')
     $.ajaxSetup({
         headers: {
@@ -39,7 +41,6 @@ $('body').on('click','.change-status', function(){
         data:{id:currentId},
         type: 'GET',
         success: function(data){
-           // console.log(data.success[0].name)
             $('.modal-body').empty()
             cId=currentId
             for(i=0;i<data.success.length;i++){
@@ -54,7 +55,7 @@ $('body').on('click','.change-status', function(){
 });
 
 $('html').on('click','.accept-order', function() {
- var status='accepted'
+ var status='sent'
 
 
 changeStatus(status)

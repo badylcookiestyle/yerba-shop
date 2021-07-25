@@ -56,13 +56,11 @@
 
                 @else
                     <h1 class="text-center text-dange">This product doesn't exist :c</h1>
-
                 @endif
             </div>
-
             @push('scripts')
                 <script type="text/javascript" src="{{asset('js/modals/addedModal.js')}}"></script>
-    @endpush
+            @endpush
 @endsection
 @section('modals')
     @extends('modals.addToCartModal')

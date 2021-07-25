@@ -1,25 +1,65 @@
 @extends('layouts.app')
-
 @section('content')
 
 
-    <div class="container my-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+    <section class="main-dashboard my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="list">
+                        <a href="/home" class="list-group-item  text-white bg-dark">
+                            Dashboard
+                        </a>
+                        <a href="admin/settings" class="list-group-item text-dark">Products</a>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                    </div>
+
+                </div>
+                <div class="col-md-9">
+                     <h1>Your orders</h1>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Delivery Option</th>
+                            <th scope="col">Date of placing the order</th>
+                        </tr>
+                        </thead>
+                        <tbody id="products-body">
+
+                        @forelse($orders as $order)
+
+                            <tr id="{{$order->id}} ">
+                            <td><a href="details/{{$order->id}}" class="btn btn-outline-info">Details</a></td>
+                        @if($order->status=='accepted')
+                                <td class="text-success">{{$order->status}}</td>
+                                @endif
+                            @if($order->status=='cancelled')
+                                <td class="text-danger">{{$order->status}}</td>
+                            @endif
+                                <td>{{$order->delivery_option}}</td>
+                                <td>{{$order->created_at}}</td>
+
+
+                            </tr>
+                        @empty
+                            <h3>There're no Orders</h3>
+                        @endforelse
+                        <div class="d-flex my-2">
+                            {{ $orders->links() }}
+
                         </div>
-                    @endif
-                    {{ __('You are logged in!') }}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+    <footer id="footer">
 
-</div>
+    </footer>
+
+
+
 @endsection

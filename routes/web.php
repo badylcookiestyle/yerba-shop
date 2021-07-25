@@ -23,9 +23,8 @@ Route::get('/about', function () {
     return view('about');
 });
 //--- Payment
-Route::get('/payment',function(){
-    return view('shop.payment');
-});
+
+Route::get('/payment',[App\Http\Controllers\PaymentController::class,'index']);
 Route::post('/payment',[App\Http\Controllers\PaymentController::class,'payment']);
 Auth::routes();
 //--- Admin dashboard
@@ -56,5 +55,6 @@ Route::patch('/cart', [App\Http\Controllers\CartController::class,'editItem'])->
 //--- Another Routes
 Route::delete('/user/{email}', [App\Http\Controllers\AdminDashboardController::class,'deleteUser'])->name('delete.user');
 Route::get('/order/{id}',[App\Http\Controllers\PaymentController::class,'get']);
+Route::get('/details/{id}',[App\Http\Controllers\PaymentController::class,'details']);
 Route::patch('order',[App\Http\Controllers\PaymentController::class,'changeStatus']);
 

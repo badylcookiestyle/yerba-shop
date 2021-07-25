@@ -14,6 +14,9 @@ class PaymentController extends Controller
     {
         $this->middleware('auth');
     }
+    public function index(){
+        return Payment::index();
+    }
     public function payment(PaymentRequest $request){
       return  Payment::payment($request);
     }
@@ -24,5 +27,8 @@ class PaymentController extends Controller
     }
     public function changeStatus(orderStatusRequest $request){
         return Payment::changeStatus($request);
+    }
+    public function details($id){
+        return Payment::details($id);
     }
 }
