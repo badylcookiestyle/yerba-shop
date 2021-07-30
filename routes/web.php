@@ -66,4 +66,5 @@ Route::patch('order',[App\Http\Controllers\PaymentController::class,'changeStatu
 Route::post('cms/main',[App\Http\Controllers\CmsController::class,'editMain']);
 Route::post('cms/main',[App\Http\Controllers\CmsController::class,'editShop']);
 Route::post('cms/main',[App\Http\Controllers\CmsController::class,'editAbout']);
+Route::post('search',[App\Http\Controllers\SearchController::class,'search']);
 

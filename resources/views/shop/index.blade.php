@@ -83,9 +83,9 @@
 
     </nav>
     <div class="container text-center">
-        <div class="container bootstrap snipets">
+        <div class="container bootstrap snipets ">
 
-            <div class="row flow-offset-1 m-2">
+            <div class="row flow-offset-1 m-2 products">
                 @forelse($products as $product)
               <div class="col-xs-6 col-md-4 border">
                 <div class="caption">
@@ -105,6 +105,9 @@
     </div>
 @push('scripts')
 <script src="{{asset('js/filters.js')}}">
+
+</script>
+<script src="{{asset('js/searcher.js')}}">
 
 </script>
 @endpush
