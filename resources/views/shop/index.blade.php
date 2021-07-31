@@ -50,16 +50,22 @@
                 </div>
                 <div class="form-group col-12">
                     <select class="custom-select custom-select-lg mb-3 col-4" id="category">
-                        <option selected>Category</option>
-
+                        <option selected value="0">Category</option>
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
                     </select>
                     <select class="custom-select custom-select-lg mb-3 col-4" id="brand">
-                        <option selected>Brand</option>
-
+                        <option selected value="0">Brand</option>
+                        @foreach($brands as $brand)
+                            <option value="{{$brand->id}}">{{$brand->name}}</option>
+                        @endforeach
                     </select>
                     <select class="custom-select custom-select-lg mb-3 col-3" id="origin">
-                        <option selected>Origin</option>
-
+                        <option selected value="0">Origin</option>
+                        @foreach($origins as $origin)
+                            <option value="{{$origin->id}}">{{$origin->name}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group col-12">
