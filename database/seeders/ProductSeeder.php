@@ -13,6 +13,10 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('brands')->insert(['name'=>'pajarito']);
+        DB::table('brands')->insert(['name'=>'verde mate']);
+        DB::table('origin_countries')->insert(['name'=>'brazil']);
+        DB::table('origin_countries')->insert(['name'=>'africa']);
         DB::table('categories')->insert([
             'name' => 'tea',
         ]);
@@ -26,16 +30,16 @@ class ProductSeeder extends Seeder
             'name' => 'yerba1',
             'price'=>'69',
             'category_id'=>'1',
-            'brand'=>'pajarito',
-            'origin'=>'brazil',
+            'brand_id'=>'1',
+            'origin_id'=>'1',
             'description'=>'description',
             'image_path'=>'yerba1.jpg',
         ]);
         DB::table('products')->insert([
             'name' => 'yerba2',
             'price'=>'62',
-            'brand'=>'pajarito',
-            'origin'=>'brazil',
+            'brand_id'=>'1',
+            'origin_id'=>'1',
             'category_id'=>'2',
             'description'=>'description2',
             'image_path'=>'yerba2.jpg',
@@ -43,8 +47,8 @@ class ProductSeeder extends Seeder
         DB::table('products')->insert([
             'name' => 'yerba3',
             'price'=>'22',
-            'brand'=>'rosamonte',
-            'origin'=>'brazil',
+            'brand_id'=>'1',
+            'origin_id'=>'1',
             'category_id'=>'2',
             'description'=>'description2',
             'image_path'=>'yerba3.jpg',
@@ -52,8 +56,8 @@ class ProductSeeder extends Seeder
         DB::table('products')->insert([
             'name' => 'yerba4',
             'price'=>'24',
-            'brand'=>'verde ,ate',
-            'origin'=>'brazil',
+            'brand_id'=>'2',
+            'origin_id'=>'2',
             'category_id'=>'2',
             'description'=>'description2',
             'image_path'=>'yerba4.jpg',
@@ -61,8 +65,8 @@ class ProductSeeder extends Seeder
         DB::table('products')->insert([
             'name' => 'yerba5',
             'price'=>'14',
-            'brand'=>'verde mate',
-            'origin'=>'brazil',
+            'brand_id'=>'2',
+            'origin_id'=>'2',
             'category_id'=>'2',
             'description'=>'description2',
             'image_path'=>'yerba5.jpg',
@@ -70,8 +74,8 @@ class ProductSeeder extends Seeder
         DB::table('products')->insert([
             'name' => 'yerba6',
             'price'=>'16',
-            'brand'=>'hoja',
-            'origin'=>'brazil',
+            'brand_id'=>'2',
+            'origin_id'=>'1',
             'category_id'=>'2',
             'description'=>'description2',
             'image_path'=>'yerba6.jpg',
@@ -79,8 +83,8 @@ class ProductSeeder extends Seeder
         DB::table('products')->insert([
             'name' => 'yerba7',
             'price'=>'16',
-            'brand'=>'hoja',
-            'origin'=>'brazil',
+            'brand_id'=>'2',
+            'origin_id'=>'1',
             'category_id'=>'2',
             'description'=>'description2',
             'image_path'=>'yerba7.jpg',
@@ -88,8 +92,8 @@ class ProductSeeder extends Seeder
         DB::table('products')->insert([
             'name' => 'yerba8',
             'price'=>'16',
-            'brand'=>'hoja',
-            'origin'=>'brazil',
+            'brand_id'=>'2',
+            'origin_id'=>'2',
             'category_id'=>'2',
             'description'=>'description2',
             'image_path'=>'yerba8.jpg',
@@ -97,8 +101,8 @@ class ProductSeeder extends Seeder
         DB::table('products')->insert([
             'name' => 'yerba9',
             'price'=>'16',
-            'brand'=>'hoja',
-            'origin'=>'brazil',
+            'brand_id'=>'2',
+            'origin_id'=>'1',
             'category_id'=>'2',
             'description'=>'description2',
             'image_path'=>'yerba9.jpg',

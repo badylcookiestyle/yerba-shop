@@ -20,9 +20,9 @@ class CreateProductsTable extends Migration
             $table->string("name");
             $table->decimal("price");
             $table->foreignId('category_id')->references('id')->on('categories');
+            $table->foreignId('brand_id')->references('id')->on('brands');
+            $table->foreignId('origin_id')->references('id')->on('origin_countries');
             $table->text("description");
-            $table->string("origin");
-            $table->string("brand");
             $table->text("image_path");
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->nullable();
