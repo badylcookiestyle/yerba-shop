@@ -49,36 +49,37 @@
                     <input type="number" class="form-control" id="maxPrice" >
                 </div>
                 <div class="form-group col-12">
-                    <select class="custom-select custom-select-lg mb-3 col-4">
+                    <select class="custom-select custom-select-lg mb-3 col-4" id="category">
                         <option selected>Category</option>
 
                     </select>
-                    <select class="custom-select custom-select-lg mb-3 col-4">
+                    <select class="custom-select custom-select-lg mb-3 col-4" id="brand">
                         <option selected>Brand</option>
 
                     </select>
-                    <select class="custom-select custom-select-lg mb-3 col-3">
+                    <select class="custom-select custom-select-lg mb-3 col-3" id="origin">
                         <option selected>Origin</option>
 
                     </select>
                 </div>
                 <div class="form-group col-12">
 
-                    <select class="custom-select custom-select-lg mb-3 col-6">
+                    <select class="custom-select custom-select-lg mb-3 col-6" id="order">
                         <option selected>Date added</option>
                     </select>
                     <span class="searching_sort_radios my-5 col-6">
-                        <input type="radio" class="searching_asc" name="order" id="searching_dsc" value="a" checked="">
+                        <input type="radio" class="searching_asc" name="order" id="searching_order" value="a" checked="">
                         <label for="searching_dsc">Ascending</label>
-                        <input type="radio" class="searching_asc" id="searching_asc" name="order" value="d">
+                        <input type="radio" class="searching_asc"  id="searching_order" name="order" value="d">
                         <label for="searching_asc">Descending</label></span>
+
                 </div>
             </div>
 
 
 
 
-            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="button" class="btn btn-primary" id="search">Search</button>
         </form>
 
     </nav>

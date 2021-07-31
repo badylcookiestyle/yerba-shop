@@ -8,6 +8,6 @@ class ShopController extends Controller
 {
     public function index(){
         $products=Product::select("id","name","price","image_path")->get();
-        return view('shop.index')->with("products",$products);
+        return view('shop.index',["products"=>$products]);
     }
 }
