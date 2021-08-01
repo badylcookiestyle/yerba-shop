@@ -42,6 +42,7 @@
                         <div class="panel-heading">
                             <h3 class="products-panel-title">Latest Products</h3>
                         </div>
+
                         <div class="products-panel-body">
                             <table class="table">
                                 <thead>

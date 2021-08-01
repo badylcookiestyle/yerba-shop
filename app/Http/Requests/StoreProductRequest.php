@@ -26,12 +26,8 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'productName'=>'required|min:3|max:64',
-            'productBrand'=>['required','min:3','max:64',
-            Rule::unique('products','brand')->where(function ($query) {
-                $query->where('name', $this->productName)
-                   ->where('brand', $this->productBrand);
-            })],
-            'productOrigin'=>'required|min:3|max:64|',
+            'productBrand'=>['required','gt:0','exists:brands,id'],
+            'productOrigin'=>'required|gt:0|exists:origin_countries,id',
             'productQuantity'=>'required|min:0|numeric',
             'productDescription'=>'required|min:32|max:500',
             'productCategory'=>'required|exists:categories,name',

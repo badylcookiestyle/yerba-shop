@@ -44,8 +44,8 @@ class Product extends Model
             $product->price = $request->productPrice;
             $product->category_id = $categoryId;
             $product->description = $request->productDescription;
-            $product->origin = $request->productOrigin;
-            $product->brand = $request->productBrand;
+            $product->origin_id = $request->productOrigin;
+            $product->brand_id = $request->productBrand;
             $product->save();
             Stock::insert(['product_id' => $product->id, 'quantity' => $request->productQuantity]);
             return response()->json(['success' => 'working', 'id' => $product->id]);

@@ -1,6 +1,8 @@
 @php
     use Illuminate\Support\Facades\DB;
-    $categories=DB::select('select * from categories')
+      $categories=DB::select('select * from categories');
+    $brands=DB::select('select * from brands');
+    $origins=DB::select('select * from origin_countries');
 @endphp
 
 <!-- Modal -->
@@ -26,13 +28,21 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="productBrandEdit">Brand</label>
-                            <input type="text" class="form-control" id="productBrandEdit" placeholder="Brand of the product">
+                            <select class="form-select" id="productBrandEdit" aria-label="Select Origin">
+                                @foreach($brands as $brand )
+                                    <option data-cId="{{$brand->id}}" value={{$brand->name}}>{{$brand->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-10">
                             <label for="productOriginEdit">Country of Origin</label>
-                            <input type="text" class="form-control" id="productOriginEdit" placeholder="Country of origin">
+                            <select class="form-select" id="productEdit" aria-label="Select Origin">
+                                @foreach($origins as $origin )
+                                    <option data-cId="{{$origin->id}}" value={{$origin->name}}>{{$origin->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group col-md-2">
                             <label for="productQuantityEdit">Quantity</label>

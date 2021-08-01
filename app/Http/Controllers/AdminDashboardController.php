@@ -28,13 +28,13 @@ class AdminDashboardController extends Controller
      */
     public function index()
     {
-        $amountOfUsers=0;
-        $amountOfProducts=0;
-
         if(Auth::check() && Auth::user()->is_admin!=0){
             $amountOfUsers=User::count();
             $amountOfProducts=Product::count();
-            $latestsProducts=Product::select('id','name','brand','origin','price')->orderBy('id','desc')->take(5)->get();
+            $latestsProducts=Product::select('products.id','products.name as name','brands.name as brand','origin_countries.name as origin','price')
+                ->join('brands','products.brand_id','=','brands.id')
+                ->join('origin_countries','products.origin_id','=','origin_countries.id')
+                ->orderBy('id','desc')->take(5)->get();
             return view('adminDashboard.index',['amountOfUsers'=>$amountOfUsers,'amountOfProducts'=>$amountOfProducts,'products'=>$latestsProducts]);
         }
     //--- I decided that user won't have access to this panel :)
@@ -43,7 +43,10 @@ class AdminDashboardController extends Controller
     public function productList(){
         if(Auth::user()->is_admin!=0){
             $quanity=Stock::orderBy('product_id','DESC')->paginate(7)->pluck('quantity')->toArray();
-            $products=Product::orderBy('id','DESC')->paginate(7);
+            $products=Product::select('products.id','products.name as name','brands.name as brand','origin_countries.name as origin','price')
+                ->join('brands','products.brand_id','=','brands.id')
+                ->join('origin_countries','products.origin_id','=','origin_countries.id')
+                ->orderBy('id','desc')->paginate(7);
             return view('adminDashboard.productList',["products"=>$products,"quantity"=>$quanity]);
         }
         return view('home');

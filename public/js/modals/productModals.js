@@ -57,6 +57,7 @@ $("#add-product-btn").click(function(){
     var form_data = new FormData();
     form_data.append('productName',$('#productName').val());
     form_data.append('productBrand',$('#productBrand').val());
+    form_data.append('productBrandName',$('#productBrand').text());
     form_data.append('productOrigin',$('#productOrigin').val());
     form_data.append('productDescription',$('#productDescription').val());
     form_data.append('productCategory',$('#productCategory').val());
@@ -151,17 +152,7 @@ $("#edit-product-btn").click(function(){
     form_data.append('productIdEdit',productId);
     form_data.append('fileEdit',file_data);
 
-    var kek={
-        productNameEdit:$('#productNameEdit').val(),
-        productBrandEdit:$('#productBrandEdit').val(),
-        productOriginEdit:$('#productOriginEdit').val(),
-        productQuantityEdit:$('#productQuantityEdit').val(),
-        productDescriptionEdit:$('#productDescriptionEdit').val(),
-        productCategoryEdit:$('#productCategoryEdit').val(),
-        productPriceEdit:$('#productPriceEdit').val(),
-        productIdEdit:productId,
-        fileEdit:file_data,
-    }
+
 
     $.ajax({
         url: "/product",
@@ -169,7 +160,7 @@ $("#edit-product-btn").click(function(){
         cache: false,
         contentType: false,
         processData: false,
-        data:kek,
+        data:form_data,
         type: 'PUT',
         success: function(data){
             $('#product-edit-errors').empty()

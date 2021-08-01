@@ -1,7 +1,9 @@
 <!-- I know  makiing queries in blades should be illegal!!!!!!!! -->
 @php
     use Illuminate\Support\Facades\DB;
-    $categories=DB::select('select * from categories')
+    $categories=DB::select('select * from categories');
+    $brands=DB::select('select * from brands');
+    $origins=DB::select('select * from origin_countries');
 @endphp
 
 <!-- Modal -->
@@ -25,13 +27,22 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="productBrand">Brand</label>
-                            <input type="text" class="form-control" id="productBrand" placeholder="Brand of the product">
+                            <select class="form-select" id="productBrand" aria-label="Select Origin">
+                            @foreach($brands as $brand )
+                                <option value="{{$brand->id}}" value={{$brand->name}}>{{$brand->name}}</option>
+                            @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-10">
                             <label for="productOrigin">Country of Origin</label>
-                            <input type="text" class="form-control" id="productOrigin" placeholder="Country of origin">
+
+                            <select class="form-select" id="productOrigin" aria-label="Select Origin">
+                            @foreach($origins as $origin )
+                                <option value="{{$origin->id}}" value={{$origin->name}}>{{$origin->name}}</option>
+                            @endforeach
+                            </select>
                         </div>
                         <div class="form-group col-md-2">
                             <label for="productQuantity">Quantity</label>
