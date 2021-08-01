@@ -141,17 +141,17 @@ $("#edit-product-btn").click(function(){
     });
 
     var file_data = $('#fileEdit').prop('files')[0];
-    var form_data = new FormData();
-    form_data.append('productNameEdit',$('#productNameEdit').val());
-    form_data.append('productBrandEdit',$('#productBrandEdit').val());
-    form_data.append('productOriginEdit',$('#productOriginEdit').val());
-    form_data.append('productDescriptionEdit',$('#productDescriptionEdit').val());
-    form_data.append('productCategoryEdit',$('#productCategoryEdit').val());
-    form_data.append('productPriceEdit',$('#productPriceEdit').val());
-    form_data.append('productQuantityEdit',$('#productQuantityEdit').val());
-    form_data.append('productIdEdit',productId);
-    form_data.append('fileEdit',file_data);
-
+    var form_dataa = new FormData();
+    form_dataa.append('productNameEdit',$('#productNameEdit').val());
+    form_dataa.append('productBrandEdit',$('#productBrandEdit').val());
+    form_dataa.append('productOriginEdit',$('#productOriginEdit').val());
+    form_dataa.append('productDescriptionEdit',$('#productDescriptionEdit').val());
+    form_dataa.append('productCategoryEdit',$('#productCategoryEdit').val());
+    form_dataa.append('productPriceEdit',$('#productPriceEdit').val());
+    form_dataa.append('productQuantityEdit',$('#productQuantityEdit').val());
+    form_dataa.append('productIdEdit',productId);
+    form_dataa.append('fileEdit',file_data);
+    console.log(form_dataa)
 
 
     $.ajax({
@@ -160,7 +160,7 @@ $("#edit-product-btn").click(function(){
         cache: false,
         contentType: false,
         processData: false,
-        data:form_data,
+        data:form_dataa,
         type: 'PUT',
         success: function(data){
             $('#product-edit-errors').empty()

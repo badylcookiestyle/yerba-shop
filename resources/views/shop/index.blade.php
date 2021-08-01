@@ -72,6 +72,8 @@
 
                     <select class="custom-select custom-select-lg mb-3 col-6" id="order">
                         <option selected>Date added</option>
+                        <option >Price</option>
+                        <option >Alphabet</option>
                     </select>
                     <span class="searching_sort_radios my-5 col-6">
                         <input type="radio" class="searching_asc" name="order" id="searching_order" value="a" checked="">

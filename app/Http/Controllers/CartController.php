@@ -13,16 +13,16 @@ class CartController extends Controller
 {
     function index(){
         if (Auth::check()){
-            $products=Cart::select(DB::raw('products.*,cart_items.quantity,cart_items.cart_id,stock.quantity as z'))
+            $products=Cart::select(DB::raw('products.*,cart_items.quantity,cart_items.cart_id,stock.quantity as z,brands.name as brand,origin_countries.name as origin'))
                 ->join('cart_items','carts.id','=','cart_items.cart_id')
                 ->join('products','cart_items.product_id','=','products.id')
+                ->join('brands','products.brand_id','=','brands.id')
+                ->join('origin_countries','products.origin_id','=','origin_countries.id')
                 ->join('stock','products.id','=','stock.product_id')
                 ->where('carts.user_id',Auth::id())
                 ->where('expired',0)->get();
-
             return view('shop.cart',['products'=>$products]);
         }
-     //   return view('shop.cart');
     }
     function add(ToCartRequest $request){
         if (Auth::check()) {
@@ -32,7 +32,6 @@ class CartController extends Controller
                 $cart->created_at=now();
                 $cart->save();
                 $cartId=$cart->id;
-
             }
             else{
                 $cartId=Cart::where('user_id',Auth::id())->where('expired',0)->pluck('id')->first();

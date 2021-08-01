@@ -56,14 +56,14 @@ class AdminDashboardController extends Controller
             $orders=Payment::paginate(7);
             return view('adminDashboard.orders',['orders'=>$orders]);
         }
-        return view('home');
+        return redirect("/home");
     }
     public function userList(){
         if(Auth::user()->is_admin!=0){
             $users=User::select('name','email','created_at')->where('is_admin',0)->paginate(7);
             return view("adminDashboard.userList",["users"=>$users]);
         }
-        return view('home');
+        return redirect("/home");
     }
     public function deleteUser($email){
         if(Auth::user()->is_admin!=0){
@@ -71,6 +71,6 @@ class AdminDashboardController extends Controller
                 return response()->json(['success' =>$email]);
             }
         }
-
+return redirect("/home");
     }
 

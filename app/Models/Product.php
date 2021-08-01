@@ -18,7 +18,11 @@ class Product extends Model
     protected $table = 'products';
     protected $primaryKey = 'id';
     public static function index($id){
-        $product=Product::where('id',$id)->first();
+        $product=Product::selectRaw("products.image_path,products.price,products.id,products.name,brands.name as brand,origin_countries.name as origin")
+            ->join('brands','products.brand_id','=','brands.id')
+            ->join('origin_countries','products.origin_id','=','origin_countries.id')
+            ->where('products.id',$id)
+            ->first();
         $inStock=Stock::select('quantity')
             ->where('product_id',$id)
             ->first()
@@ -67,8 +71,8 @@ class Product extends Model
                     'price' => $request->productPriceEdit,
                     'category_id' => $request->productCategoryEdit,
                     'description' => $request->productDescriptionEdit,
-                    'origin' => $request->productOriginEdit,
-                    'brand' => $request->productBrandEdit,
+                    'origin_id' => $request->productOriginEdit,
+                    'brand_id' => $request->productBrandEdit,
                     'image_path' => $path
                 ]);
             return;

@@ -18,16 +18,17 @@ $("#search").on("click",function(){
     var orderType=$("#order").val()
     var searchingOrder=$("#filters #searching_order:checked").val()
     console.log(text)
-    console.log(searching_dsc)
+    console.log(searching_order)
     var data={
-        text:text
-        minPrice:minPrice
-        maxPrice:maxPrice
-        category:category
-        brand:brand
-        origin:origin
-        orderType:orderType
-        searchingOrder:searchingOrder
+        search:text,
+        minPrice:minPrice,
+        maxPrice:maxPrice,
+        category:category,
+        brand:brand,
+        origin:origin,
+        orderType:orderType,
+        searchingOrder:searchingOrder,
+        filtered:true
     }
     $('.products').empty()
     $.ajaxSetup({
@@ -42,6 +43,7 @@ $("#search").on("click",function(){
         data:data,
         type: 'POST',
         success: function (data) {
+            console.log(data)
             console.log(data.products)
             console.log(data.products.length)
             if(data.products.length==0){

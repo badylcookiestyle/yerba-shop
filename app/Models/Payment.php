@@ -60,7 +60,13 @@ class Payment extends Model
         public static function details($id){
             $userId=Auth::id();
             if(Auth::user()->is_admin==0){
-            $products=DB::select("SELECT  products.price,products.origin,products.id,products.name,products.brand,cart_items.quantity,orders.status,products.image_path  FROM orders INNER JOIN carts ON orders.cart_id=carts.id INNER JOIN  cart_items on carts.id=cart_items.cart_id inner join products on cart_items.product_id = products.id WHERE orders.id=? AND orders.user_id=?",[$id,$userId]);
+            $products=DB::select("SELECT  products.price,products.origin,products.id,products.name,products.brand,cart_items.quantity,orders.status,products.image_path
+                FROM orders
+                INNER JOIN carts ON orders.cart_id=carts.id
+                INNER JOIN  cart_items on carts.id=cart_items.cart_id
+                INNER JOIN products on cart_items.product_id = products.id
+                INNER JOIN brands on products.brand_id=brands.id
+                WHERE orders.id=? AND orders.user_id=?",[$id,$userId]);
             if(isset($products[0])){
                 return view('details',['products'=>$products]);
             }
