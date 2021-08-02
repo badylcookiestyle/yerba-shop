@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-
+use App\Http\Requests\SearchRequest;
 class SearchController extends Controller
 {
     private $brandId;
@@ -87,7 +87,7 @@ class SearchController extends Controller
         return $this->getProducts();
     }
 
-    public function search(Request $request)
+    public function search(SearchRequest $request)
     {
         if (!isset($request->filtered) && $request->filtered == true) {
             $products = Product::where('name', 'like', '%' . $request->search . '%')->get();
