@@ -28,6 +28,10 @@ class SearchController extends Controller
             case 'Alphabet':
                 $orderField = 'name';
                 break;
+            case 0:
+                $orderField = 'name';
+            default:
+                $orderField = 'name';
         }
         return $orderField;
     }
