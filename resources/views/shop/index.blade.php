@@ -19,7 +19,7 @@
       <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);height:100%">
         <div class="d-flex justify-content-center align-items-center h-100">
           <div class="text-white">
-            <h1 class="mb-3">
+            <h1 class="mb-3 header-title">
                 Your favourite yerba<br>
                 in the best price!
             </h1>
@@ -118,6 +118,14 @@
 </script>
 <script src="{{asset('js/searcher.js')}}">
 
+</script>
+<script>
+
+    $.getJSON("{{asset('jsons/title.json')}}",function(data){
+        var json=data
+        $("#header-title").text(json.data.title)
+
+    });
 </script>
 @endpush
 @endsection

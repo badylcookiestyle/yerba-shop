@@ -25,11 +25,11 @@ class SearchRequest extends FormRequest
     {
         return [
             'search'=>'sometimes|max:80',
-            'minPrice'=>'sometimes|gt:-1',
-            'maxPrice'=>'sometimes|gt:-1',
-            'category'=>'sometimes|gt:-1',
-            'brand'=>'sometimes|gt:-1',
-            'origin'=>'sometimes|gt:-1',
+            'minPrice'=>'sometimes ',
+            'maxPrice'=>'sometimes ',
+            'category'=>'sometimes ',
+            'brand'=>'sometimes ',
+            'origin'=>'sometimes ',
             'orderType'=>'sometimes|in:Date added,Price,Alphabet',
             'searchingOrder'=>'sometimes|in:a,d',
             'filtered'=>'sometimes'
