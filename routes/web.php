@@ -22,9 +22,7 @@ Route::get('/contact', function () {
 Route::get('/about', function () {
     return view('about');
 });
-Route::get('admin/cms', function () {
-    return view('adminDashboard.cms');
-});
+
 //--- Payment
 
 Route::get('/payment',[App\Http\Controllers\PaymentController::class,'index']);
@@ -63,8 +61,11 @@ Route::get('/order/{id}',[App\Http\Controllers\PaymentController::class,'get']);
 Route::get('/details/{id}',[App\Http\Controllers\PaymentController::class,'details']);
 Route::patch('order',[App\Http\Controllers\PaymentController::class,'changeStatus']);
 //--- Edit cms
+
+Route::get('admin/cms',[App\Http\Controllers\AdminDashboardController::class,'cms']);
 Route::post('cms/main',[App\Http\Controllers\CmsController::class,'editMain']);
-Route::post('cms/main',[App\Http\Controllers\CmsController::class,'editShop']);
-Route::post('cms/main',[App\Http\Controllers\CmsController::class,'editAbout']);
+Route::post('cms/shop',[App\Http\Controllers\CmsController::class,'editShop']);
+Route::post('cms/about',[App\Http\Controllers\CmsController::class,'editAbout']);
+//--- Search
 Route::post('search',[App\Http\Controllers\SearchController::class,'search']);
 

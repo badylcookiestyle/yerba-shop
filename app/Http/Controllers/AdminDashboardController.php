@@ -37,8 +37,15 @@ class AdminDashboardController extends Controller
                 ->orderBy('id','desc')->take(5)->get();
             return view('adminDashboard.index',['amountOfUsers'=>$amountOfUsers,'amountOfProducts'=>$amountOfProducts,'products'=>$latestsProducts]);
         }
+
     //--- I decided that user won't have access to this panel :)
     return redirect("/home");
+    }
+    public function cms(){
+        if(Auth::user()->is_admin!=0) {
+            return view('adminDashboard.cms');
+        }
+        return redirect('/home');
     }
     public function productList(){
         if(Auth::user()->is_admin!=0){
@@ -70,7 +77,8 @@ class AdminDashboardController extends Controller
                 User::where("email",$email)->where("is_admin",0)->delete();
                 return response()->json(['success' =>$email]);
             }
+        return redirect("/home");
         }
-return redirect("/home");
+
     }
 
