@@ -17,6 +17,7 @@ class Product extends Model
     use HasFactory;
     protected $table = 'products';
     protected $primaryKey = 'id';
+
     public static function index($id){
         $product=Product::selectRaw("products.image_path,products.price,products.id,products.name,brands.name as brand,origin_countries.name as origin")
             ->join('brands','products.brand_id','=','brands.id')
@@ -32,6 +33,30 @@ class Product extends Model
         }
         return view('product.index');
     }
+    public static function insertProduct($path,$categoryId,$request){
+        $product = new Product;
+        $product->name = $request->productName;
+        $product->image_path = $path;
+        $product->price = $request->productPrice;
+        $product->category_id = $categoryId;
+        $product->description = $request->productDescription;
+        $product->origin_id = $request->productOrigin;
+        $product->brand_id = $request->productBrand;
+        $product->save();
+
+        Stock::insert(['product_id' => $product->id, 'quantity' => $request->productQuantity]);
+    }
+    public static function updateProduct($path,$request){
+        Product::where("id", $request->productIdEdit)
+            ->update(['name' => $request->productNameEdit,
+                'price' => $request->productPriceEdit,
+                'category_id' => $request->productCategoryEdit,
+                'description' => $request->productDescriptionEdit,
+                'origin_id' => $request->productOriginEdit,
+                'brand_id' => $request->productBrandEdit,
+                'image_path' => $path
+            ]);
+    }
     public static function add($request){
 
         if (Auth::user()->is_admin != 0) {
@@ -42,17 +67,9 @@ class Product extends Model
             $path = $request->file('file')->storeAs('', $imageName, 'public');
             $imagePath->move(public_path('\images\products'), $imageName);
             $categoryId = Category::where("name", $request->productCategory)->pluck('id')->first();
-            $product = new Product;
-            $product->name = $request->productName;
-            $product->image_path = $path;
-            $product->price = $request->productPrice;
-            $product->category_id = $categoryId;
-            $product->description = $request->productDescription;
-            $product->origin_id = $request->productOrigin;
-            $product->brand_id = $request->productBrand;
-            $product->save();
-            Stock::insert(['product_id' => $product->id, 'quantity' => $request->productQuantity]);
-            return response()->json(['success' => 'working', 'id' => $product->id]);
+            self::insertProduct($path,$categoryId,$request);
+
+            return response()->json(['success' => 'working']);
         }
     }
     public static function edit($request){
@@ -66,32 +83,21 @@ class Product extends Model
             $imageName = $imagePath->getClientOriginalName() . time();
             $path = $request->file('file')->storeAs('', $imageName, 'public');
             $imagePath->move(public_path('\images\products'), $imageName);
-            Product::where("id", $request->productIdEdit)
-                ->update(['name' => $request->productNameEdit,
-                    'price' => $request->productPriceEdit,
-                    'category_id' => $request->productCategoryEdit,
-                    'description' => $request->productDescriptionEdit,
-                    'origin_id' => $request->productOriginEdit,
-                    'brand_id' => $request->productBrandEdit,
-                    'image_path' => $path
-                ]);
-            return;
+            self::updateProduct($path,$request);
+
         }
-        Product::where("id", $request->productIdEdit)
-            ->update(['name' => $request->productNameEdit,
-                'price' => $request->productPriceEdit,
-                'category_id' => $request->productCategoryEdit,
-                'description' => $request->productDescriptionEdit,
-                'origin' => $request->productOriginEdit,
-                'brand' => $request->productBrandEdit]);
-        return;
+
+
     }
-    public static function deleteProduct($id){
+    public static function deleteImage($id){
         $image = Product::where('id', $id)->pluck('image_path')->first();
         $path = public_path('images/products/' . $image);
         File::delete($path);
         Stock::where('product_id', $id)->delete();
+    }
+    public static function deleteProduct($id){
 
+        self::deleteImage($id);
         $currentProduct = Product::find($id);
         $currentProduct->delete($id);
         return response()->json(['success' => 'working', 'id' => $id]);

@@ -22,13 +22,14 @@ class HomeController extends Controller
      *
      * @return Renderable
      */
-    public function index()
-    { if(Auth::check() && Auth::user()->is_admin==1){
-        return redirect("/admin");
-    }
-    //--- I decided that admin won't have access to this panel :)
+    public function index(){
+        if(Auth::check() && Auth::user()->is_admin==1){
+            return redirect("/admin");
+        }
+        //--- I decided that admin won't have access to this panel :)
         $id=Auth::id();
         $orders=Payment::where('user_id',$id)->paginate(10);
+
         return view('home',['orders'=>$orders]);
     }
 }

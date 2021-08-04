@@ -21,9 +21,7 @@ class PaymentController extends Controller
       return  Payment::payment($request);
     }
     public function get($id){
-
-            return Payment::get($id);
-
+        return Payment::get($id);
     }
     public function changeStatus(orderStatusRequest $request){
         return Payment::changeStatus($request);
