@@ -8,10 +8,10 @@
                         <a href="/admin" class="list-group-item  text-white bg-dark">
                             Dashboard
                         </a>
-                        <a href="admin/productList" class="list-group-item text-dark">Products</a>
-                        <a href="#" class="list-group-item text-dark">Orders</a>
-                        <a href="admin/userList" class="list-group-item text-dark">Users</a>
-                        <a href="admin/cms" class="list-group-item text-dark">Cms</a>
+                        <a href="/admin/productList" class="list-group-item text-dark">Products</a>
+                        <a href="/admin/orders" class="list-group-item text-dark">Orders</a>
+                        <a href="/admin/userList" class="list-group-item text-dark">Users</a>
+                        <a href="/admin/cms" class="list-group-item text-dark">Cms</a>
                     </div>
                 </div>
                 <div class="col-md-9">
@@ -33,7 +33,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="d-flex">
-                                    <h4>Visitors 0</h4>
+                                    <h4>Visitors {{$amountOfVisitors}}</h4>
                                 </div>
                             </div>
                         </div>

@@ -9,10 +9,10 @@
                         <a href="/admin" class="list-group-item  text-dark">
                             Dashboard
                         </a>
-                        <a href="admin/productList" class="list-group-item text-dark">Products</a>
-                        <a href="#" class="list-group-item text-dark">Orders</a>
-                        <a href="admin/userList" class="list-group-item text-dark">Users</a>
-                        <a href="admin/cms" class="list-group-item text-white bg-dark">Cms</a>
+                        <a href="/admin/productList" class="list-group-item text-dark">Products</a>
+                        <a href="/admin/orders" class="list-group-item text-dark">Orders</a>
+                        <a href="/admin/userList" class="list-group-item text-dark">Users</a>
+                        <a href="/admin/cms" class="list-group-item text-white bg-dark">Cms</a>
                     </div>
                 </div>
                 <div class="col-md-9">

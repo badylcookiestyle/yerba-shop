@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Payment;
+use App\Models\Visitor;
 use Auth;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
@@ -31,11 +32,12 @@ class AdminDashboardController extends Controller
         if(Auth::check() && Auth::user()->is_admin!=0){
             $amountOfUsers=User::count();
             $amountOfProducts=Product::count();
+            $amountOfVisitors=Visitor::count();
             $latestsProducts=Product::select('products.id','products.name as name','brands.name as brand','origin_countries.name as origin','price')
                 ->join('brands','products.brand_id','=','brands.id')
                 ->join('origin_countries','products.origin_id','=','origin_countries.id')
                 ->orderBy('id','desc')->take(5)->get();
-            return view('adminDashboard.index',['amountOfUsers'=>$amountOfUsers,'amountOfProducts'=>$amountOfProducts,'products'=>$latestsProducts]);
+            return view('adminDashboard.index',['amountOfUsers'=>$amountOfUsers,'amountOfProducts'=>$amountOfProducts,'products'=>$latestsProducts,"amountOfVisitors"=>$amountOfVisitors]);
         }
 
     //--- I decided that user won't have access to this panel :)

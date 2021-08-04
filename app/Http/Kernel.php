@@ -83,5 +83,6 @@ class Kernel extends HttpKernel
         'signed' => ValidateSignature::class,
         'throttle' => ThrottleRequests::class,
         'verified' => EnsureEmailIsVerified::class,
+        'visitor' => \App\Http\Middleware\VisitorCounter::class
     ];
 }

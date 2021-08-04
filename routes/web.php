@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 //--- General Routes
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('visitor');
 Route::get('/contact', function () {
     return view('contact');
 });
