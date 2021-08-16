@@ -39,6 +39,9 @@ Route::prefix('admin')->group(function () {
         ->name('admin.orders');
     Route::get('/userList', [App\Http\Controllers\AdminDashboardController::class, 'userList'])
         ->name('admin.userList');
+    Route::get('/stats', [App\Http\Controllers\AdminDashboardController::class, 'stats'])
+        ->name('admin.stats');
+
 });
 //--- Home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
@@ -88,6 +91,7 @@ Route::prefix('order')->group(function () {
     Route::get('/{id}', [App\Http\Controllers\PaymentController::class, 'getOrders']);
     Route::patch('/', [App\Http\Controllers\PaymentController::class, 'changeStatus']);
 });
+
 //---Another Routes
 Route::delete('/user/{email}', [App\Http\Controllers\AdminDashboardController::class, 'deleteUser'])
     ->name('delete.user');

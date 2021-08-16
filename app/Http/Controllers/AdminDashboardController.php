@@ -81,6 +81,13 @@ class AdminDashboardController extends Controller
             }
         return redirect("/home");
         }
+    public function stats(){
+        if(Auth::user()->is_admin!=0){
+            $visits=Visitor::selectRaw("distinct count(date) as amount,date")->groupBy("date")->get();
+            return view("adminDashboard.stats",["visits"=>$visits]);
+        }
+        return redirect("/home");
+    }
 
     }
 

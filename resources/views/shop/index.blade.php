@@ -113,18 +113,12 @@
           </div>
     </div>
 @push('scripts')
-<script src="{{asset('js/filters.js')}}">
-
-</script>
-<script src="{{asset('js/searcher.js')}}">
-
-</script>
+<script src="{{asset('js/filters.js')}}"></script>
+<script src="{{asset('js/searcher.js')}}"></script>
 <script>
-
     $.getJSON("{{asset('jsons/title.json')}}",function(data){
         var json=data
-        $("#header-title").text(json.data.title)
-
+        $(".header-title").text(json.data.title)
     });
 </script>
 @endpush

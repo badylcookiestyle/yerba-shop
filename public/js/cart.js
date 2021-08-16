@@ -37,7 +37,6 @@ function deleteItem(id){
     });
 }
 $('body').on('click', '.delete-product', function () {
-    console.log($(this).data('product-id'))
     $(this).parent().parent().parent().parent().parent().remove()
     deleteItem($(this).data('product-id'))
 

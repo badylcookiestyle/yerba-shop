@@ -17,8 +17,7 @@ $("#search").on("click",function(){
     var origin=$("#origin").val()
     var orderType=$("#order").val()
     var searchingOrder=$("#filters #searching_order:checked").val()
-    console.log(text)
-    console.log(searching_order)
+
     var data={
         search:text,
         minPrice:minPrice,
@@ -43,9 +42,7 @@ $("#search").on("click",function(){
         data:data,
         type: 'POST',
         success: function (data) {
-            console.log(data)
-            console.log(data.products)
-            console.log(data.products.length)
+
             if(data.products.length==0){
                 $('.products').append(" <h2>There aren't any products yet :/</h2>")
             }
@@ -67,7 +64,7 @@ $("#search").on("click",function(){
 
         },
         error: function (data) {
-            console.log(data)
+
         }
 
 

@@ -10,7 +10,7 @@ $("#shop-change").click(function(){
     var file_data = $('#backgroundImage').prop('files')[0];
     var form_data = new FormData();
     form_data.append('file',file_data);
-    form_data.append('title',$("#title").val())
+    form_data.append('title',$("#title-shop").val())
 
     console.log(form_data)
     $.ajax({
