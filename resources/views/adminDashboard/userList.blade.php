@@ -13,6 +13,7 @@
                         <a href="/admin/orders" class="list-group-item text-dark">Orders</a>
                         <a href="/admin/userList" class="list-group-item text-white bg-dark">Users</a>
                         <a href="/admin/cms" class="list-group-item text-dark">Cms</a>
+                        <a href="/admin/stats" class="list-group-item text-dark">Stats</a>
                     </div>
 
                 </div>

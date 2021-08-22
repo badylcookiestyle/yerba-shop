@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use App\Models\Stock;
-use App\Models\Cart;
 use App\Models\CartItem;
 
 use App\Http\Requests\ToCartRequest;

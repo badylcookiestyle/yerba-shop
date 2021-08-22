@@ -20,18 +20,17 @@
                     <header class="col-12 border text-center bg-dark text-white">
                          <h2>Stats panel</h2>
 
+
                     </header>
                     <div class="text-center">
-                        <button class="btn btn-link text-dark btn-lg">Visits</button>
-                        <button class="btn btn-link text-dark btn-lg">Products</button>
-                        <button class="btn btn-link text-dark btn-lg">Orders</button>
+                        <button class="btn btn-link text-dark btn-lg font-weight-bold stats-labels" id="visits">Visits</button>
+                        <button class="btn btn-link text-dark btn-lg stats-labels" id="products">Products</button>
+                        <button class="btn btn-link text-dark btn-lg stats-labels" id="orders">Orders</button>
                     </div>
                     <div class="col-12 current">
-                        <div class="col-12 container-fluid"id="chart_div"></div>
-                            {{$visits}}
-
-
-
+                        <div class="col-12 container-fluid chart"id="visit_chart_div"></div>
+                        <div class="col-12 container-fluid chart"id="products_chart_div"></div>
+                        <div class="col-12 container-fluid chart"id="orders_chart_div"></div>
                     </div>
                 </div>
             </div>
@@ -45,28 +44,10 @@
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
 
-            google.charts.load('current', {'packages':['corechart']});
-            google.charts.setOnLoadCallback(drawChart);
 
-            function drawChart() {
-                var data = google.visualization.arrayToDataTable([
-                    ['Year', 'Sales', 'Expenses'],
-                    ['2004',  1000,      400],
-                    ['2005',  1170,      460],
-                    ['2006',  660,       1120],
-                    ['2007',  1030,      540]
-                ]);
+        </script>
+        <script type="text/javascript" src="{{asset('js/stats/stats.js')}}">
 
-                var options = {
-                    title: 'Company Performance',
-                    curveType: 'function',
-                    legend: { position: 'bottom' }
-                };
-
-                var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-
-                chart.draw(data, options);
-            }
         </script>
 
 

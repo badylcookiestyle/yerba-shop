@@ -2,20 +2,16 @@
 
 namespace Tests\Feature;
 
+use App\Models\Product;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function test_example()
-    {
-        $response = $this->get('/');
+     public function canProductBeAdded(){
+         $this->post('product/',['name'=>'name','image_path'=>'path','price'=>'23','category_id'=>'1','description'=>'desc','origin_id'=>'1','brand_id'=>'2']);
+         $response->assertOk();
+         $this->assertCount(1,Product::all());
+     }
 
-        $response->assertStatus(200);
-    }
 }

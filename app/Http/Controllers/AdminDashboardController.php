@@ -8,10 +8,14 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Product;
-
+use Illuminate\Support\Facades\DB;
+use App\Models\Cart;
 use App\Models\Stock;
+use mysql_xdevapi\Table;
+
 class AdminDashboardController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
@@ -36,9 +40,18 @@ class AdminDashboardController extends Controller
             $latestsProducts=Product::select('products.id','products.name as name','brands.name as brand','origin_countries.name as origin','price')
                 ->join('brands','products.brand_id','=','brands.id')
                 ->join('origin_countries','products.origin_id','=','origin_countries.id')
-                ->orderBy('id','desc')->take(5)->get();
-            return view('adminDashboard.index',['amountOfUsers'=>$amountOfUsers,'amountOfProducts'=>$amountOfProducts,'products'=>$latestsProducts,"amountOfVisitors"=>$amountOfVisitors]);
+                ->orderBy('id','desc')
+                ->take(5)
+                ->get();
+
+            return view('adminDashboard.index',[
+                'amountOfUsers'=>$amountOfUsers,
+                'amountOfProducts'=>$amountOfProducts,
+                'products'=>$latestsProducts,
+                'amountOfVisitors'=>$amountOfVisitors]);
         }
+
+
 
     //--- I decided that user won't have access to this panel :)
     return redirect("/home");
@@ -83,8 +96,8 @@ class AdminDashboardController extends Controller
         }
     public function stats(){
         if(Auth::user()->is_admin!=0){
-            $visits=Visitor::selectRaw("distinct count(date) as amount,date")->groupBy("date")->get();
-            return view("adminDashboard.stats",["visits"=>$visits]);
+
+            return view("adminDashboard.stats");
         }
         return redirect("/home");
     }

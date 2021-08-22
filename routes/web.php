@@ -91,7 +91,17 @@ Route::prefix('order')->group(function () {
     Route::get('/{id}', [App\Http\Controllers\PaymentController::class, 'getOrders']);
     Route::patch('/', [App\Http\Controllers\PaymentController::class, 'changeStatus']);
 });
-
+//--- stats
+Route::prefix('stats')->group(function(){
+    Route::get('/visits',[App\Http\Controllers\StatsController::class,'visits']);
+    Route::get('/orders',[App\Http\Controllers\StatsController::class,'orders']);
+    Route::get('/products',[App\Http\Controllers\StatsController::class,'products']);
+});
+Route::prefix('adders')->group(function(){
+    Route::post('/brand',[App\Http\Controllers\AddersController::class,'brand']);
+    Route::post('/category',[App\Http\Controllers\AddersController::class,'category']);
+    Route::post('/country',[App\Http\Controllers\AddersController::class,'country']);
+});
 //---Another Routes
 Route::delete('/user/{email}', [App\Http\Controllers\AdminDashboardController::class, 'deleteUser'])
     ->name('delete.user');

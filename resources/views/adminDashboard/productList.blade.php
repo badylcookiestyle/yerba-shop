@@ -13,6 +13,7 @@
                         <a href="/admin/orders" class="list-group-item text-dark">Orders</a>
                         <a href="/admin/userList" class="list-group-item text-dark">Users</a>
                         <a href="/admin/cms" class="list-group-item text-dark">Cms</a>
+                        <a href="/admin/stats" class="list-group-item text-dark">Stats</a>
                     </div>
 
                 </div>
@@ -63,6 +64,19 @@
                                         data-target="#addProductModal">
                                     Add new product
                                 </button>
+                            <button  class="btn btn-outline-warning ml-2 btn-sm" data-toggle="modal"
+                                     data-target="#addCategoryModal">
+                                Add new category
+                            </button>
+                            <button  class="btn btn-warning ml-2 btn-sm" data-toggle="modal"
+                                     data-target="#addBrandModal">
+                                Add new brand
+                            </button>
+                            <button  class="btn btn-outline-dark ml-2 btn-sm" data-toggle="modal"
+                                     data-target="#addCountryModal">
+                                Add new <br>
+                                country of origin
+                            </button>
                             </div>
                         </tbody>
                     </table>
@@ -77,11 +91,14 @@
 @endsection
 @push('scripts')
     <script type="text/javascript" src="{{asset('js/modals/productModals.js')}}">
-
     </script>
+    <script type="text/javascript" src="{{asset('js/modals/addersModals.js')}}"></script>
 @endpush
 @section('modals')
     @extends('modals.addProductModal')
     @extends('modals.editProductModal')
     @extends('modals.deleteProductModal')
+    @extends('modals.addProductCategoryModal')
+    @extends('modals.addProductBrandModal')
+    @extends('modals.addProductCountryModal')
 @endsection

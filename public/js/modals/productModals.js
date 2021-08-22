@@ -1,4 +1,5 @@
 $('#product-errors').hide()
+
 var currentId=""
 var currentName=""
 var productId=""
